@@ -32,11 +32,6 @@ app.get("/doctors", async (req, res) => {
     }
 });
 
-// Server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
 // Add a new doctor
 app.post("/doctors", async (req, res) => {
     try {
@@ -57,6 +52,7 @@ app.post("/doctors", async (req, res) => {
         res.status(500).json({ error: "Server Error", details: error.message });
     }
 });
+
 // Book an appointment
 app.post("/appointments", async (req, res) => {
     try {
@@ -78,6 +74,7 @@ app.post("/appointments", async (req, res) => {
         res.status(500).send("Server Error");
     }
 });
+
 // Get all appointments
 app.get("/appointments", async (req, res) => {
     try {
@@ -94,6 +91,7 @@ app.get("/appointments", async (req, res) => {
         res.status(500).send("Server Error");
     }
 });
+
 // Cancel an appointment
 app.delete("/appointments/:id", async (req, res) => {
     try {
@@ -113,4 +111,10 @@ app.delete("/appointments/:id", async (req, res) => {
         console.error(error);
         res.status(500).send("Server Error");
     }
+});
+
+// Server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
